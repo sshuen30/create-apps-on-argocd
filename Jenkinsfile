@@ -15,7 +15,7 @@ pipeline {
                     for app in manifests/*.yaml; do
                         if [ -f "$app" ]; then
                             echo "Creating ArgoCD application from: $app"
-                            argocd app create -f "$app" --server ${ARGOCD_SERVER} --auth-token ${ARGOCD_AUTH_TOKEN}
+                            argocd app create -f $app --server ${ARGOCD_SERVER} --auth-token ${ARGOCD_AUTH_TOKEN}
                         else
                             echo "No YAML files found."
                         fi
