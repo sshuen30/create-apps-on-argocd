@@ -1,0 +1,14 @@
+project: default
+source:
+  repoURL: https://github.com/sshuen30/flask-project-meme.git
+  path: .
+  targetRevision: HEAD
+destination:
+  server: https://kubernetes.default.svc
+  namespace: meme
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
