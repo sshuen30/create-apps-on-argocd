@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-wordpress-app
+  name: bitnami-wordpress
   namespace: argocd
 spec:
   destination:
     namespace: wordpress
     server: https://kubernetes.default.svc  # Default Kubernetes API server
   source:
-    repoURL: 'https://your-repo-url.git'  # URL of your Git repository
+    repoURL: 'https://github.com/sshuen30/k8s-helm-chart-bitnami-wordpress.git'  # URL of your Git repository
     targetRevision: HEAD
     path: '.'  # Specify the path to your manifests (or use '.' for the root)
     helm:
