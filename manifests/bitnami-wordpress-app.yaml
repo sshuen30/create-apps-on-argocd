@@ -14,7 +14,9 @@ spec:
     helm:
       chart: oci://registry-1.docker.io/bitnamicharts/wordpress
       valueFiles:
-        - custom-resources-mariadb-replication.yaml  # Optional values file
+        - custom-resources-mariadb-replication.yaml
+      credentials:
+        - docker-io-helm-oci
   syncPolicy:
     automated:
       prune: true
