@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: flask-cmdhelper
+  namespace: argocd  # Make sure this is correct for your setup
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/sshuen30/flask-project-cmdhelper.git
+    path: .
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: maria-demo
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
