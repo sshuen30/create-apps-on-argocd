@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bitnami-wordpress
+  name: my-wordpress
   namespace: argocd
 spec:
   destination:
@@ -12,7 +12,7 @@ spec:
     targetRevision: HEAD
     path: '.'  # Specify the path to your manifests (or use '.' for the root)
     helm:
-      chart: https://charts.bitnami.com/bitnami/wordpress
+      chart: oci://registry-1.docker.io/bitnamicharts/wordpress
       valueFiles:
         - custom-resources-mariadb-replication.yaml  # Optional values file
   syncPolicy:
