@@ -11,7 +11,7 @@ spec:
     path: .  # The path to your chart
     helm:
       valueFiles:
-        - values.yaml  # Your custom values file
+        - custom-resources-mariadb-replication.yaml  # Your custom values file
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: wordpress  # The namespace you want to deploy to
