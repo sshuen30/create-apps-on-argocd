@@ -9,6 +9,8 @@ spec:
     server: https://kubernetes.default.svc  # Default Kubernetes API server
   sources:
   - repoURL: registry-1.docker.io/bitnamicharts
+    path: 'wordpress'
+    targetRevision: 23.1.24
     chart: wordpress
     helm:
       valueFiles:
