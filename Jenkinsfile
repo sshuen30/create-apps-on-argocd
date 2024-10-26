@@ -12,7 +12,7 @@ pipeline {
                 script {
                     // Use a shell command to find all YAML files in the 'manifest' folder
                     sh '''
-                    for app in manifest/*.yaml; do
+                    for app in manifests/*.yaml; do
                         if [ -f "$app" ]; then
                             argocd app create -f "$app" --server ${ARGOCD_SERVER} --auth-token ${ARGOCD_AUTH_TOKEN}
                         fi
