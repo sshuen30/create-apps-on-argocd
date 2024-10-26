@@ -1,19 +1,16 @@
 pipeline {
-    agent { label 'jenkinsnode1' }
+    agent { label 'jenkinsnode1' } // Specify the agent label
 
     environment {
         ARGOCD_SERVER = '172.16.44.16:30282' // URL of your Argo CD server
-        ARGOCD_AUTH_TOKEN = credentials('argcd-auth-token') // Use Jenkins credentials
+        ARGOCD_AUTH_TOKEN = credentials('argocd-auth-token') // Use Jenkins credentials
     }
 
     stages {
         stage('Create ArgoCD Applications') {
             steps {
                 script {
-                    // List files in manifests directory for debugging
-                    sh 'echo "Files in manifests directory:" && ls -la manifests/'
-
-                    // Create ArgoCD applications for all YAML files
+                    // Use a shell command to find all YAML files in the 'manifests' folder
                     sh '''
                     for app in manifests/*.yaml; do
                         if [ -f "$app" ]; then
