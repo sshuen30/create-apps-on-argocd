@@ -7,16 +7,17 @@ spec:
   destination:
     namespace: wordpress
     server: https://kubernetes.default.svc  # Default Kubernetes API server
-  source:
-    repoURL: https://github.com/sshuen30/k8s-helm-chart-bitnami-wordpress.git  # URL of your Git repository
-    targetRevision: HEAD
-    path: '.'  # Specify the path to your manifests (or use '.' for the root)
+  sources:
+  - repoURL: registry-1.docker.io/bitnamicharts
+    chart: wordpress
     helm:
-      chart: registry-1.docker.io/bitnamicharts/wordpress
       valueFiles:
-        - custom-resources-mariadb-replication.yaml
+      - $values/custom-resources-mariadb-replication.yaml
       credentials:
-        - docker-io-helm-oci
+        - docker-io-helm-oci  
+  - repoURL: https://github.com/sshuen30/k8s-helm-chart-bitnami-wordpress.git  # URL of your Git repository
+    targetRevision: main
+    ref: values
   syncPolicy:
     automated:
       prune: true
