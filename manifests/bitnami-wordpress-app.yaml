@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/sshuen30/k8s-helm-chart-bitnami-wordpress.git'  # Change to your GitHub repo URL
     targetRevision: HEAD
-    path: .  # The path to your chart
+    path: 'wordpress'  # The path to your chart
     helm:
       valueFiles:
         - custom-resources-mariadb-replication.yaml  # Your custom values file
