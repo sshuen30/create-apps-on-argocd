@@ -10,7 +10,6 @@ spec:
   sources:
   - repoURL: registry-1.docker.io/bitnamicharts
     path: 'wordpress'
-    targetRevision: 23.1.24
     chart: wordpress
     helm:
       valueFiles:
