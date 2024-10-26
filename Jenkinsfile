@@ -10,13 +10,14 @@ pipeline {
         stage('Create ArgoCD Applications') {
             steps {
                 script {
-                    // Find all application YAML files in the 'manifest' folder
-                    def applicationFiles = findFiles(glob: 'manifest/*.yaml') // Adjust the path to your files
-                    for (app in applicationFiles) {
-                        sh """
-                            argocd app create -f ${app} --server ${ARGOCD_SERVER} --auth-token ${ARGOCD_AUTH_TOKEN}
-                        """
-                    }
+                    // Use a shell command to find all YAML files in the 'manifest' folder
+                    sh '''
+                    for app in manifest/*.yaml; do
+                        if [ -f "$app" ]; then
+                            argocd app create -f "$app" --server ${ARGOCD_SERVER} --auth-token ${ARGOCD_AUTH_TOKEN}
+                        fi
+                    done
+                    '''
                 }
             }
         }
