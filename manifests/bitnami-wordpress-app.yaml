@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bitnami-wordpress-app
+  namespace: argocd  # Change if your ArgoCD installation uses a different namespace
+spec:
+  project: default  # ArgoCD project name (default project if no custom projects are defined)
+  source:
+    repoURL: 'https://github.com/sshuen30/k8s-helm-chart-bitnami-wordpress.git'  # URL of your GitHub repo
+    targetRevision: HEAD  # Branch to track (use 'main' if HEAD is not default)
+    path: 'wordpress'  # Path to the chart in your repo, assuming 'wordpress' is the directory with Chart.yaml
+    helm:
+      valueFiles:
+        - custom-resources-mariadb-replication.yaml  # Custom values file in the 'wordpress' directory
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: wordpress  # The namespace for deploying WordPress
+  syncPolicy:
+    automated:
+      prune: true  # Automatically remove resources not defined in the chart
+      selfHeal: true  # Automatically sync any out-of-sync resources
