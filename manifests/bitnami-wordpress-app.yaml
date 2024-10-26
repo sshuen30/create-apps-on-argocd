@@ -16,7 +16,7 @@ spec:
       credentials:
       - docker-io-helm-oci  
   - repoURL: https://github.com/sshuen30/k8s-helm-chart-bitnami-wordpress.git  # URL of your Git repository
-    targetRevision: Head
+    targetRevision: HEAD
     ref: values
   syncPolicy:
     automated:
