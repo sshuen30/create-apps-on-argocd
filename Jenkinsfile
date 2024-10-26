@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'jenkinsnode1' }
 
     environment {
         ARGOCD_SERVER = '172.16.44.16:30282' // URL of your Argo CD server
