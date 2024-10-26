@@ -1,3 +1,8 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: flask-meme
+  namespace: argocd  # Make sure this is correct for your setup
 project: default
 source:
   repoURL: https://github.com/sshuen30/flask-project-meme.git
