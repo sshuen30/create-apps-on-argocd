@@ -14,9 +14,9 @@ spec:
       valueFiles:
       - $values/custom-resources-mariadb-replication.yaml
       credentials:
-        - docker-io-helm-oci  
+      - docker-io-helm-oci  
   - repoURL: https://github.com/sshuen30/k8s-helm-chart-bitnami-wordpress.git  # URL of your Git repository
-    targetRevision: main
+    targetRevision: Head
     ref: values
   syncPolicy:
     automated:
