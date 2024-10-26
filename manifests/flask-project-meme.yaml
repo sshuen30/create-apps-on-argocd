@@ -2,18 +2,19 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: flask-meme
-  namespace: argocd  # Make sure this is correct for your setup
-project: default
-source:
-  repoURL: https://github.com/sshuen30/flask-project-meme.git
-  path: .
-  targetRevision: HEAD
-destination:
-  server: https://kubernetes.default.svc
-  namespace: meme
-syncPolicy:
-  automated:
-    prune: true
-    selfHeal: true
-  syncOptions:
-    - CreateNamespace=true
+  namespace: argocd  # Ensure ArgoCD is installed in this namespace
+spec:   # Add 'spec' to match the structure
+  project: default
+  source:
+    repoURL: https://github.com/sshuen30/flask-project-meme.git
+    path: .
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: meme
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
