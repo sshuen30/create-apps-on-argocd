@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-wordpress
+  name: bitnami-wordpress
   namespace: argocd  # Change if your ArgoCD installation uses a different namespace
 spec:
   project: default  # ArgoCD project name (default project if no custom projects are defined)
